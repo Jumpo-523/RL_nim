@@ -1,5 +1,8 @@
 # coding: utf-8
 
+import random
+
+random.seed(523)
 
 class InvalidNumberError(Exception):
     pass
@@ -12,9 +15,10 @@ def c_input():
         c_input()
     return inp
 
-class Nim():
+class Nim_Env():
 
     def __init__(self, n_stones=[5,5]):
+        self.n_stones = n_stones
         self.state = {"right":n_stones[1], "left":n_stones[0]}
         self._turn = 1 #"first player:1, the second player:-1" 
     
@@ -31,7 +35,25 @@ class Nim():
             self._turn *= -1
             # display
             print(self.state)
+    def reset(self):
+        # reset state to {"right":n_stones[1], "left":n_stones[0]}
+        self.state = {"right":self.n_stones[1], "left":self.n_stones[0]}
+    
+    def transit(self, action):
+        pass
 
+
+class Q_table():
+    # Nim has a little State space. So it is a good starting point to calculate Q_table
+    def __init__(self, n_stones=[5,5]):
+        self.n_stones = n_stones
+    def create_table(self):
+        q_table = dict()
+        l_stones, r_stones = self.n_stones
+        for l in range(l_stones):
+            for r in range(r_stones):
+                q_table[(l, r)] = random.uniform(a,b)
+        self.q_table = q_table
 
 
 class State():
@@ -53,7 +75,7 @@ class State():
 
 
 if __name__ == "__main__":
-    nim = Nim()
+    nim = Nim_Env()
     nim.play()
     
             
