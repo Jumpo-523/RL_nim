@@ -129,3 +129,5 @@ dmypy.json
 .pyre/
 
 .DS_Store
+nim.py
+agent.py
