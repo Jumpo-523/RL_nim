@@ -5,6 +5,10 @@
 - https://www.kspub.co.jp/book/detail/1529175.html
 - この本の7章の「LinUCB 方策」/トンプソンサンプリング、及Logistic regression ver.を実装している。
 
+
+
+- thompson sampling の多変量正規分布からの乱数発生はhttps://analytics-note.xyz/programming/python-multivariate-normal-rvs/を参考にしました。
+  乱数発生の方法でリグレットが変わってくるという記述があり、よくわかっていない。
 <!-- 
 https://blog.brainpad.co.jp/entry/2018/04/05/163000
 こちらの実装をするためのレポジトリ
