@@ -10,12 +10,14 @@ class ContextualArms(object):
                  n_action,
                  max_n_sim, 
                  X, y=None,
+                 ds = None,
                  arms=None,
                  n_features=4,
                  is_logit=False
                 ):
         self.X = X.copy()
         self.y = y.copy()
+        self.ds = ds
         self.arms = arms
         self.n_action = n_action
         self.max_n_sim = max_n_sim
@@ -24,6 +26,7 @@ class ContextualArms(object):
         self.is_logit = is_logit
     def __len__(self):
         return self.n_action
+    
     def __getitem__(self, index):
         return self.X[index, :], self.y[index]
         pass
@@ -45,15 +48,19 @@ class ContextualArms(object):
     
     def best_arms(self):
         if self.is_logit:
-            return np.where(self.y[self._candidates_idx] == 1)[0]
+            ones_arms = np.where(self.y[self._candidates_idx] == 1)[0]
+            return ones_arms, 1
         else: # for normal contextual bandit.
-            return ds.groupby("arm").mean()["reward"].idxmax()
+            best_index = self.ds.groupby("arm").mean()["reward"].idxmax()
+            best_reward = self.ds.groupby("arm").mean()["reward"].max()*100
+            return best_index, best_reward
     def get_reward(self, index):
         """
         rewardが0,1の値をとる確率変数でわかりずらかったため、試しにdetermined valued rewardを与える。
         """
         self.history_idx.append(self._candidates_idx[index])
         if self.is_logit:
-            return (ds.groupby("arm").mean()["reward"]*100).iloc[index]
-        else:
             return self.y[self._candidates_idx[index]]
+        else:
+            return (self.ds.groupby("arm").mean()["reward"]*100).iloc[index]
+            
