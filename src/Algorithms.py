@@ -1,6 +1,13 @@
 # The implementation is borrowed from..
 # https://github.com/johnmyleswhite/BanditsBook/blob/master/python/
-import math
+
+import math, random
+
+def ind_max(x):
+  m = max(x)
+  return x.index(m)
+
+
 class UCB1():
     def __init__(self, counts, values):
         self.counts = counts
