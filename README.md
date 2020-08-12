@@ -24,4 +24,7 @@ https://blog.brainpad.co.jp/entry/2018/04/05/163000
 
 - LinUCB, Thompson sampling, UCB, $\epsilon$ - greedy法に基づく性能比較をするnb
 
-## 
+## logistic_regression.ipynb
+
+- Logit モデルに基づいたトンプソンサンプリングの実装
+  ラプラス近似をしてthetaを数値計算するが、各iterationの度に逆行列を求める必要があり、online学習ではかなり時間がかかってしまうため、　thetaの更新を100回の試行ごとにしている。
