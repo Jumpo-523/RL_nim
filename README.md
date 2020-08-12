@@ -18,3 +18,10 @@ https://blog.brainpad.co.jp/entry/2018/04/05/163000
   - https://github.com/icoxfog417/baby-steps-of-rl-ja/blob/master/DP/environment.py
   - https://github.com/Kaggle/kaggle-environments
 -->
+
+
+## Calculate_Regret.ipynb
+
+- LinUCB, Thompson sampling, UCB, $\epsilon$ - greedy法に基づく性能比較をするnb
+
+## 
