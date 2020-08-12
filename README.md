@@ -19,6 +19,9 @@ https://blog.brainpad.co.jp/entry/2018/04/05/163000
   - https://github.com/Kaggle/kaggle-environments
 -->
 
+## Bandit_LinUCB.ipynb
+- LinUCB法と、Thompson samplingの実装をしている。
+- LinUCB法のアルゴリズムはこのnbでの実装を元に、Calculate_Regret.ipynbで更新・修正を行っているため、そちらを参照して欲しい。
 
 ## Calculate_Regret.ipynb
 
@@ -28,3 +31,9 @@ https://blog.brainpad.co.jp/entry/2018/04/05/163000
 
 - Logit モデルに基づいたトンプソンサンプリングの実装
   ラプラス近似をしてthetaを数値計算するが、各iterationの度に逆行列を求める必要があり、online学習ではかなり時間がかかってしまうため、　thetaの更新を100回の試行ごとにしている。
+
+
+
+# 今後の修正案
+
+- Issuesで管理する。
